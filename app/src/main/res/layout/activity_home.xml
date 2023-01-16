@@ -6,13 +6,115 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/greeter"
+        android:layout_width="389dp"
+        android:layout_height="266dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.724"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_chef"
+            android:layout_width="144dp"
+            android:layout_height="207dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.934"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.508"
+            app:srcCompat="@drawable/android_chef_" />
+
+        <TextView
+            android:id="@+id/headline2"
+            android:layout_width="189dp"
+            android:layout_height="31dp"
+            android:fontFamily="casual"
+            android:text="DroidRestaurant"
+            android:textColor="#7A400A"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/image_chef"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headline1" />
+
+        <TextView
+            android:id="@+id/headline1"
+            android:layout_width="194dp"
+            android:layout_height="58dp"
+            android:fontFamily="serif"
+            android:text="Bienvenue\nchez"
+            android:textAlignment="textEnd"
+            android:textColor="#E18615"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/image_chef"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button_entry"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#05F18902"
+        android:text="Entrées"
+        android:textColor="#E18615"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_main_course"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/greeter" />
+
+    <Button
+        android:id="@+id/button_main_course"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
+        android:text="Plats"
+        android:textColor="#E18615"
+        android:textSize="34sp"
+        android:backgroundTint="#05F18902"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/greeter" />
+
+    <Button
+        android:id="@+id/button_dessert"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
+        android:text="Desserts"
+        android:textColor="#E18615"
+        android:textSize="34sp"
+        android:backgroundTint="#05F18902"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_main_course" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="115dp"
+        android:layout_height="2dp"
+        android:background="#7A400A"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/button_main_course"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_entry" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="115dp"
+        android:layout_height="2dp"
+        android:background="#7A400A"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/button_dessert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_main_course" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

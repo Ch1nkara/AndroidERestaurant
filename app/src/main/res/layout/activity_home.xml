@@ -57,7 +57,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button_entry"
+        android:id="@+id/button_starter"
         android:layout_width="280dp"
         android:layout_height="80dp"
         android:backgroundTint="#05F18902"
@@ -104,7 +104,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_main_course"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_entry" />
+        app:layout_constraintTop_toBottomOf="@+id/button_starter" />
 
     <TextView
         android:id="@+id/textView2"

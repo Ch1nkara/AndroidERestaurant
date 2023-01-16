@@ -1,36 +1,38 @@
 package fr.isen.vincentdubaret.androiderestaurant
 
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityHomeBinding
 
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        //set available choices for smoke, light and sound
-        val button_starter = findViewById<Button>(R.id.button_starter)
-        button_starter.setOnClickListener {
+        val myIntent = Intent(this@HomeActivity, MealListActivity::class.java)
+
+        binding.buttonStarter.setOnClickListener {
             //Toast.makeText(this@HomeActivity, "Tu as cliqué sur Entrées !", Toast.LENGTH_SHORT).show()
-            val myIntent = Intent(this@HomeActivity, MealListActivity::class.java)
+            myIntent.putExtra("menu", "starters")
             startActivity(myIntent)
         }
-        //set available choices for smoke, light and sound
-        val button_main_course = findViewById<Button>(R.id.button_main_course)
-        button_main_course.setOnClickListener {
-            val myIntent = Intent(this@HomeActivity, MealListActivity::class.java)
+        binding.buttonMainCourse.setOnClickListener {
+            myIntent.putExtra("menu", "main courses")
             startActivity(myIntent)
         }
-        //set available choices for smoke, light and sound
-        val button_dessert = findViewById<Button>(R.id.button_dessert)
-        button_dessert.setOnClickListener {
-            val myIntent = Intent(this@HomeActivity, MealListActivity::class.java)
+        binding.buttonDessert.setOnClickListener {
+            myIntent.putExtra("menu", "desserts")
             startActivity(myIntent)
         }
+    }
+    override fun onDestroy() {
+        Log.d("HUMAN", "Home has been destroyed !!!!!")
+        super.onDestroy()
     }
 }

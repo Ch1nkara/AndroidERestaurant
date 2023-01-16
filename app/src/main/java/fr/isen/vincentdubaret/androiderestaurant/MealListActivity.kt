@@ -17,6 +17,7 @@ class MealListActivity : AppCompatActivity() {
         if (extras != null) {
             var value = extras.getString("menu")
             binding.menuName.text = value
+            supportActionBar?.title = value
             //The key argument here must match that used in the other activity
         }
 

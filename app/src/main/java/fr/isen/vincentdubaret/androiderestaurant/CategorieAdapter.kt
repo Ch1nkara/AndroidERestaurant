@@ -22,7 +22,7 @@ internal class CategorieAdapter(var myArrayList: ArrayList<String>) : RecyclerVi
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = myArrayList[position]
         holder.contentName.text = item
-        holder.contentAllergen.text = item + "---"
+        holder.contentAllergen.text = item + " - allergènes"
     }
 
     override fun getItemCount(): Int = myArrayList.size

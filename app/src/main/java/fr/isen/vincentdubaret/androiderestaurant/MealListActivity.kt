@@ -8,50 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityMealListBinding
 import java.nio.charset.Charset
 import java.util.Date
-
-data class DataContent (
-    val data: ArrayList<ListOfMeal>
-)
-data class ListOfMeal (
-    val name_fr: String,
-    val name_en: String,
-    val items: ArrayList<MealDetail>
-)
-data class MealDetail (
-    val id: Int,
-    val name_fr: String,
-    val name_en: String,
-    val id_category: Int,
-    val categ_name_fr: String,
-    val categ_name_en: String,
-    val images: ArrayList<String>,
-    val ingredients: ArrayList<Ingredients>,
-    val prices: ArrayList<Prices>
-)
-data class Ingredients (
-    val id: Int,
-    val id_shop: Int,
-    val name_fr: String,
-    val name_en: String,
-    val create_date: Date,
-    val update_date: Date,
-    val id_pizza: Int
-)
-data class Prices (
-    val id: Int,
-    val id_pizza: Int,
-    val id_size: Int,
-    val price: Float,
-    val create_date: Date,
-    val update_date: Date,
-    val size: String
-)
-
 
 class MealListActivity : AppCompatActivity() {
 
@@ -72,7 +32,7 @@ class MealListActivity : AppCompatActivity() {
                 Response.Listener { response ->
                     val gson = GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create()
                     parsedData = gson.fromJson<DataContent>(response, DataContent::class.java)
-                    Log.d("##########HUMAN############", parsedData.toString())
+                    renderMenu()
                 },
                 Response.ErrorListener { error ->
                     Log.d("API", "error => $error")
@@ -84,21 +44,6 @@ class MealListActivity : AppCompatActivity() {
             }
         Volley.newRequestQueue(this).add(stringReq)
 
-        //Rendering menu
-        val extras = intent.extras
-        var menuName = extras?.getString("menu")
-        var menuList = intent.getStringArrayListExtra("meal_list")
-        if (menuName != null && menuList != null) {
-            supportActionBar?.title = menuName
-
-            myCategoryAdapter = CategorieAdapter(menuList) {
-                    mealName -> myOnClickItem(mealName)
-            }
-            val layoutManager = LinearLayoutManager(applicationContext)
-            binding.recycleView.layoutManager = layoutManager
-            binding.recycleView.adapter = myCategoryAdapter
-        }
-
         //Adding back button
         binding.buttonBack.setOnClickListener {
             val myIntent = Intent(this@MealListActivity, HomeActivity::class.java)
@@ -107,10 +52,24 @@ class MealListActivity : AppCompatActivity() {
 
 
     }
-    private fun myOnClickItem(mealName: String){
+    private fun renderMenu() {
+        var mealListNumber = intent.extras?.getInt("meal_list_number")
+        if (mealListNumber != null) {
+            supportActionBar?.title = parsedData.data[mealListNumber].name_fr
+            myCategoryAdapter = CategorieAdapter(this, parsedData.data[mealListNumber]) {
+                    mealName -> myOnClickItem(mealName)
+            }
+            val layoutManager = LinearLayoutManager(applicationContext)
+            binding.recycleView.layoutManager = layoutManager
+            binding.recycleView.adapter = myCategoryAdapter
+        }
+    }
+
+    //Onclick function to pass to recycle items
+    private fun myOnClickItem(mealName: MealDetail){
         //Log.d("##########HUMAN############", message)
         val myIntent = Intent(this@MealListActivity, MealDetailActivity::class.java)
-        myIntent.putExtra("meal", mealName)
+        //myIntent.putExtra("meal", mealName)
         startActivity(myIntent)
     }
 }

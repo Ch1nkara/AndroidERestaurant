@@ -18,13 +18,13 @@
             app:srcCompat="@drawable/entree" />
 
         <TextView
-            android:id="@+id/content_allergen"
+            android:id="@+id/content_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="to_be_replaced"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/image_meal"
-            app:layout_constraintStart_toEndOf="@+id/text_allergen"
+            app:layout_constraintStart_toEndOf="@+id/text_price"
             app:layout_constraintTop_toBottomOf="@+id/content_name" />
 
         <TextView
@@ -43,15 +43,15 @@
             android:text="Nom: "
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/text_allergen"
+            app:layout_constraintBottom_toTopOf="@+id/text_price"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/image_meal" />
 
         <TextView
-            android:id="@+id/text_allergen"
+            android:id="@+id/text_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="allèrgènes: "
+            android:text="prix: "
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/image_meal"

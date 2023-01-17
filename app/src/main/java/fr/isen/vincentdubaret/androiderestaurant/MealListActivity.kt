@@ -2,7 +2,6 @@ package fr.isen.vincentdubaret.androiderestaurant
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityMealListBinding
@@ -20,32 +19,22 @@ class MealListActivity : AppCompatActivity() {
         setContentView(view)
 
         val extras = intent.extras
-        if (extras != null) {
-            var value = extras.getString("menu")
-            supportActionBar?.title = value
-        }
+        var menuName = extras?.getString("menu")
+        var menuList = intent.getStringArrayListExtra("meal_list")
 
-        myCategoryAdapter = CategorieAdapter(itemsList)
-        val layoutManager = LinearLayoutManager(applicationContext)
-        binding.recycleView.layoutManager = layoutManager
-        binding.recycleView.adapter = myCategoryAdapter
-        prepareItems()
+        if (menuName != null && menuList != null) {
+            supportActionBar?.title = menuName
+
+            myCategoryAdapter = CategorieAdapter(menuList)
+            val layoutManager = LinearLayoutManager(applicationContext)
+            binding.recycleView.layoutManager = layoutManager
+            binding.recycleView.adapter = myCategoryAdapter
+        }
 
         binding.buttonBack.setOnClickListener {
             val myIntent = Intent(this@MealListActivity, HomeActivity::class.java)
             startActivity(myIntent)
         }
-    }
-    private fun prepareItems() {
-
-        itemsList.add("Item 3")
-        itemsList.add("Item 4")
-
-        //itemsList = resources.getStringArray(R.array.Lines).toList() as ArrayList<String>
-
-
-        Log.d("HUMAN", itemsList.toString())
-        myCategoryAdapter.notifyDataSetChanged()
     }
 
 }

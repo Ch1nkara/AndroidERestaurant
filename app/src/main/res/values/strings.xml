@@ -1,11 +1,25 @@
 <resources>
     <string name="app_name">AndroidERestaurant</string>
 
-    <string-array name="Lines">
-        <item>kJ</item>
-        <item>kWh</item>
-        <item>Btu</item>
-        <item>kcal</item>
+    <string-array name="starters">
+        <item>Entrée 1</item>
+        <item>Entrée 2</item>
+        <item>Entrée 3</item>
+        <item>Entrée 4</item>
+    </string-array>
+
+    <string-array name="main_course">
+        <item>Plat principal 1</item>
+        <item>Plat principal 2</item>
+        <item>Plat principal 3</item>
+        <item>Plat principal 4</item>
+    </string-array>
+
+    <string-array name="dessert">
+        <item>Dessert 1</item>
+        <item>Dessert 2</item>
+        <item>Dessert 3</item>
+        <item>Dessert 4</item>
     </string-array>
 
 </resources>

@@ -25,7 +25,9 @@ class MealListActivity : AppCompatActivity() {
         if (menuName != null && menuList != null) {
             supportActionBar?.title = menuName
 
-            myCategoryAdapter = CategorieAdapter(menuList)
+            myCategoryAdapter = CategorieAdapter(menuList) {
+                    mealName -> myOnClickItem(mealName)
+            }
             val layoutManager = LinearLayoutManager(applicationContext)
             binding.recycleView.layoutManager = layoutManager
             binding.recycleView.adapter = myCategoryAdapter
@@ -36,5 +38,11 @@ class MealListActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
     }
-
+    private fun myOnClickItem(mealName: String){
+        //Log.d("##########HUMAN############", message)
+        val myIntent = Intent(this@MealListActivity, MealDetailActivity::class.java)
+        myIntent.putExtra("meal", mealName)
+        startActivity(myIntent)
+    }
 }
+

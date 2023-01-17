@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-internal class CategorieAdapter(var myArrayList: ArrayList<String>) : RecyclerView.Adapter<CategorieAdapter.MyViewHolder>() {
+internal class CategorieAdapter(var myArrayList: ArrayList<String>, private val listener: (String) -> Unit) : RecyclerView.Adapter<CategorieAdapter.MyViewHolder>() {
 
-    internal inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val contentName: TextView = view.findViewById(R.id.content_name)
         val contentAllergen : TextView = view.findViewById(R.id.content_allergen)
     }
@@ -23,6 +23,7 @@ internal class CategorieAdapter(var myArrayList: ArrayList<String>) : RecyclerVi
         val item = myArrayList[position]
         holder.contentName.text = item
         holder.contentAllergen.text = item + " - allergènes"
+        holder.itemView.setOnClickListener { listener(item) }
     }
 
     override fun getItemCount(): Int = myArrayList.size

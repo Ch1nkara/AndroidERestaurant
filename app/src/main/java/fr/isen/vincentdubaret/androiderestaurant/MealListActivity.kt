@@ -10,13 +10,13 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
 import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityMealListBinding
+import java.io.Serializable
 import java.nio.charset.Charset
 import java.util.Date
 
 class MealListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMealListBinding
-    private var itemsList = ArrayList<String>()
     private lateinit var myCategoryAdapter : CategorieAdapter
     private lateinit var parsedData : DataContent
 
@@ -31,7 +31,7 @@ class MealListActivity : AppCompatActivity() {
             object : StringRequest(Method.POST, "http://test.api.catering.bluecodegames.com/menu",
                 Response.Listener { response ->
                     val gson = GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create()
-                    parsedData = gson.fromJson<DataContent>(response, DataContent::class.java)
+                    parsedData = gson.fromJson(response, DataContent::class.java)
                     renderMenu()
                 },
                 Response.ErrorListener { error ->
@@ -49,8 +49,6 @@ class MealListActivity : AppCompatActivity() {
             val myIntent = Intent(this@MealListActivity, HomeActivity::class.java)
             startActivity(myIntent)
         }
-
-
     }
     private fun renderMenu() {
         var mealListNumber = intent.extras?.getInt("meal_list_number")
@@ -66,10 +64,10 @@ class MealListActivity : AppCompatActivity() {
     }
 
     //Onclick function to pass to recycle items
-    private fun myOnClickItem(mealName: MealDetail){
+    private fun myOnClickItem(myMealDetail: MealDetail){
         //Log.d("##########HUMAN############", message)
         val myIntent = Intent(this@MealListActivity, MealDetailActivity::class.java)
-        //myIntent.putExtra("meal", mealName)
+        myIntent.putExtra("meal_infos", myMealDetail as Serializable)
         startActivity(myIntent)
     }
 }

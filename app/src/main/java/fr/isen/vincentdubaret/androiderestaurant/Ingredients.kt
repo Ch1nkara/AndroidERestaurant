@@ -1,5 +1,6 @@
 package fr.isen.vincentdubaret.androiderestaurant
 
+import java.io.Serializable
 import java.util.Date
 
 data class Ingredients (
@@ -10,4 +11,4 @@ data class Ingredients (
     val create_date: Date,
     val update_date: Date,
     val id_pizza: Int
-)
+) : Serializable

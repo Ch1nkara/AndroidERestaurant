@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">AndroidERestaurant</string>
+
+    <string-array name="Lines">
+        <item>kJ</item>
+        <item>kWh</item>
+        <item>Btu</item>
+        <item>kcal</item>
+    </string-array>
+
 </resources>

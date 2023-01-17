@@ -47,23 +47,12 @@ class MealListActivity : AppCompatActivity() {
         }
 
         val queue = Volley.newRequestQueue(this)
-        //val url = "http://test.api.catering.bluecodegames.com/menu"
-        val url = "https://private-4c0e8-simplestapi3.apiary-mock.com/message"
-
-        //val jsonArray = JSONArray()
-        //val jsonObject = JSONObject()
-        //jsonObject.put("id_sho", 1)
-        //jsonArray.put(jsonObject)
-        //val requestBody = jsonObject.toString()
-
-        val requestBody = "id_sho=1"
-        //val requestBody = "id=1" + "&msg=test_msg"
+        val url = "http://test.api.catering.bluecodegames.com/menu"
+        val requestBody = "{\"id_shop\": 1 }"
         val stringReq : StringRequest =
             object : StringRequest(Method.POST, url,
                 Response.Listener { response ->
-                    // response
-                    var strResp = response.toString()
-                    Log.d("API", strResp)
+                    Log.d("API", response.toString())
                 },
                 Response.ErrorListener { error ->
                     Log.d("API", "error => $error")

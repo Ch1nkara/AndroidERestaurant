@@ -1,7 +1,10 @@
 package fr.isen.vincentdubaret.androiderestaurant
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
@@ -73,7 +76,7 @@ class MealDetailActivity : AppCompatActivity() {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-            if (readContent != "{}") {
+            if (readContent != "{}" && readContent != "") {
                 myLocalCart = Gson().fromJson(readContent, LocalCart::class.java)
             }
             myLocalCart.add(newOrder)
@@ -82,6 +85,7 @@ class MealDetailActivity : AppCompatActivity() {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
+            Log.d("##########HUMAN############", myLocalCart.toString())
             //Saving cart item numbers in a shared preference
             val preferencesEditor = localCartPreferences.edit()
             nbItemInCart += binding.mealCount.text.toString().toInt()
@@ -95,6 +99,10 @@ class MealDetailActivity : AppCompatActivity() {
             alertBuilder.setMessage("La panier a été mis à jour")
             alertBuilder.setPositiveButton("Ok") { dialog, which -> }
             alertBuilder.show()
+        }
+        findViewById<ImageView>(R.id.cart_image).setOnClickListener {
+            val myIntent = Intent(this@MealDetailActivity, CheckOutActivity::class.java)
+            startActivity(myIntent)
         }
     }
 

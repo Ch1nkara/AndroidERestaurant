@@ -1,9 +1,9 @@
 package fr.isen.vincentdubaret.androiderestaurant
 
-import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
+import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
@@ -23,7 +23,20 @@ class MealDetailActivity : AppCompatActivity() {
         setContentView(view)
 
         val myMealDetail = intent.extras?.get("meal_infos") as MealDetail
-        supportActionBar?.title = myMealDetail.name_fr
+
+        val localCartPreferences = this.getSharedPreferences("localCartPreferences", MODE_PRIVATE)
+        var nbItemInCart = localCartPreferences.getInt("nbItemsInCart", 0)
+
+        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setCustomView(R.layout.custom_action_bar)
+        findViewById<TextView>(R.id.action_bar_title).text = myMealDetail.name_fr
+        val nbItemInCart_tv = findViewById<TextView>(R.id.nb_in_cart)
+        if (nbItemInCart != 0) {
+            nbItemInCart_tv.text = nbItemInCart.toString()
+            nbItemInCart_tv.visibility = View.VISIBLE
+        }
+
         binding.mealName.text = myMealDetail.name_fr
         binding.mealCount.text = "1"
         binding.total.text = "SOUS TOTAL " + myMealDetail.prices[0].price.toString() + "€"
@@ -32,9 +45,7 @@ class MealDetailActivity : AppCompatActivity() {
             ingredientsList += ingredient.name_fr + ", "
         }
         binding.ingredients.text = ingredientsList.dropLast(2)
-
         binding.viewPager.adapter = PictureAdapter(this, myMealDetail.images)
-
         binding.mealAdd.setOnClickListener {
             var nbMeal = binding.mealCount.text.toString().toInt() + 1
             binding.mealCount.text = nbMeal.toString()
@@ -48,6 +59,7 @@ class MealDetailActivity : AppCompatActivity() {
             }
         }
         binding.total.setOnClickListener {
+            //Saving cart json in a file
             val newOrder = AnOrder(myMealDetail.id, binding.mealCount.text.toString().toInt())
             val file = File(this.filesDir, "localCart.txt")
             var readContent = ""
@@ -65,6 +77,14 @@ class MealDetailActivity : AppCompatActivity() {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
+            //Saving cart item numbers in a shared preference
+            val preferencesEditor = localCartPreferences.edit()
+            nbItemInCart += binding.mealCount.text.toString().toInt()
+            preferencesEditor.putInt("nbItemsInCart", nbItemInCart)
+            preferencesEditor.apply()
+            nbItemInCart_tv.text = nbItemInCart.toString()
+            nbItemInCart_tv.visibility = View.VISIBLE
+            //Printing success
             val alertBuilder = AlertDialog.Builder(this)
             alertBuilder.setTitle("Panier à jour")
             alertBuilder.setMessage("La panier a été mis à jour")

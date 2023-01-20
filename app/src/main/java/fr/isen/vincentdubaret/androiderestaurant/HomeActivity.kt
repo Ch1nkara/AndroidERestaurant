@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityHomeBinding
+    //private val localCartPreferences = this.getSharedPreferences("localCartPreferences", MODE_PRIVATE)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -31,6 +34,10 @@ class HomeActivity : AppCompatActivity() {
             myIntent.putExtra("meal_list_number", 2)
             startActivity(myIntent)
         }
+        val localCartPreferences = this.getSharedPreferences("localCartPreferences", MODE_PRIVATE)
+        val preferencesEditor = localCartPreferences.edit()
+        preferencesEditor.putInt("nbItemsInCart", 0)
+        preferencesEditor.apply()
     }
     override fun onDestroy() {
         Log.d("##########HUMAN############", "Home has been destroyed !!!!!")

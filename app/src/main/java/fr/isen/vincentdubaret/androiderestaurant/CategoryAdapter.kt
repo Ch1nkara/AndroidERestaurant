@@ -1,7 +1,6 @@
 package fr.isen.vincentdubaret.androiderestaurant
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 
-internal class CategorieAdapter(var myContext : Context, var myParsedData: ListOfMeal, private val listener: (MealDetail) -> Unit) : RecyclerView.Adapter<CategorieAdapter.MyViewHolder>() {
+internal class CategoryAdapter(var myContext : Context, var myParsedData: ListOfMeal, private val listener: (MealDetail) -> Unit) : RecyclerView.Adapter<CategoryAdapter.MyViewHolder>() {
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val contentName: TextView = view.findViewById(R.id.content_name)

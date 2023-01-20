@@ -26,16 +26,7 @@ class MealDetailActivity : AppCompatActivity() {
             ingredientsList += ingredient.name_fr + ", "
         }
         binding.ingredients.text = ingredientsList.dropLast(2)
-        //Picasso.with(this).load(myMealDetail.images[0]).into(binding.viewPager)
 
-
-        var textList = ArrayList<String>()
-        textList.add("Slide 1")
-        textList.add("Slide 2")
-        textList.add("Slide 3")
-
-        val mViewPagerAdapter = PictureAdapter(this, textList)
-        binding.viewPager.adapter = mViewPagerAdapter
-
+        binding.viewPager.adapter = PictureAdapter(this, myMealDetail.images)
     }
 }

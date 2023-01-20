@@ -12,12 +12,11 @@ import com.google.gson.GsonBuilder
 import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityMealListBinding
 import java.io.Serializable
 import java.nio.charset.Charset
-import java.util.Date
 
 class MealListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMealListBinding
-    private lateinit var myCategoryAdapter : CategorieAdapter
+    private lateinit var myCategoryAdapter : CategoryAdapter
     private lateinit var parsedData : DataContent
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +53,7 @@ class MealListActivity : AppCompatActivity() {
         var mealListNumber = intent.extras?.getInt("meal_list_number")
         if (mealListNumber != null) {
             supportActionBar?.title = parsedData.data[mealListNumber].name_fr
-            myCategoryAdapter = CategorieAdapter(this, parsedData.data[mealListNumber]) {
+            myCategoryAdapter = CategoryAdapter(this, parsedData.data[mealListNumber]) {
                     mealName -> myOnClickItem(mealName)
             }
             val layoutManager = LinearLayoutManager(applicationContext)

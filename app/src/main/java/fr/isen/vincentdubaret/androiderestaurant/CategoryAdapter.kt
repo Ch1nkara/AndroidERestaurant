@@ -30,7 +30,15 @@ internal class CategoryAdapter(var myContext : Context, var myParsedData: ListOf
         holder.contentPrice.text = item.prices[0].price.toString()
         val url = item.images[0]
         if (url.isNotEmpty()) {
-            Picasso.with(myContext).load(item.images[0]).into(holder.imageMeal)
+            if (item.images[0] != "") {
+                Picasso.with(myContext).load(item.images[0])
+                    .error(R.drawable.not_found)
+                    .into(holder.imageMeal)
+            } else {
+                holder.imageMeal.setImageResource(R.drawable.not_found)
+            }
+        } else {
+            holder.imageMeal.setImageResource(R.drawable.not_found)
         }
         holder.itemView.setOnClickListener { listener(item) }
     }

@@ -9,7 +9,6 @@ import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityHomeBinding
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    //private val localCartPreferences = this.getSharedPreferences("localCartPreferences", MODE_PRIVATE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -60,7 +60,12 @@ class MealDetailActivity : AppCompatActivity() {
         }
         binding.total.setOnClickListener {
             //Saving cart json in a file
-            val newOrder = AnOrder(myMealDetail.id, binding.mealCount.text.toString().toInt())
+            val newOrder = AnOrder(
+                myMealDetail.id,
+                binding.mealCount.text.toString().toInt(),
+                myMealDetail.name_fr,
+                myMealDetail.prices[0].price
+            )
             val file = File(this.filesDir, "localCart.txt")
             var readContent = ""
             try {

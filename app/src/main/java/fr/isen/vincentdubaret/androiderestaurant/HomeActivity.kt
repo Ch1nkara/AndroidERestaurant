@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
     override fun onDestroy() {
-        Log.d("HUMAN", "Home has been destroyed !!!!!")
+        Log.d("##########HUMAN############", "Home has been destroyed !!!!!")
         super.onDestroy()
     }
 }

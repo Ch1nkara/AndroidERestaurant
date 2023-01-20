@@ -2,6 +2,7 @@ package fr.isen.vincentdubaret.androiderestaurant
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityMealDetailBinding
 
@@ -26,5 +27,15 @@ class MealDetailActivity : AppCompatActivity() {
         }
         binding.ingredients.text = ingredientsList.dropLast(2)
         //Picasso.with(this).load(myMealDetail.images[0]).into(binding.viewPager)
+
+
+        var textList = ArrayList<String>()
+        textList.add("Slide 1")
+        textList.add("Slide 2")
+        textList.add("Slide 3")
+
+        val mViewPagerAdapter = PictureAdapter(this, textList)
+        binding.viewPager.adapter = mViewPagerAdapter
+
     }
 }

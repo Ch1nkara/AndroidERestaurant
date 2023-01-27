@@ -9,7 +9,8 @@
     <string name="home_dessert">Desserts</string>
 
     <string name="detail_minus">-</string>
-    <string name="plus">+</string>
+    <string name="detail_plus">+</string>
+    <string name="detail_total">SOUS TOTAL %s€</string>
 
     <string name="actionBar_imageDescription">cart image</string>
 
@@ -18,5 +19,6 @@
 
     <string name="itemListPicture_imageDescription">meal picture</string>
     <string name="price">prix: </string>
+    <string name="price_content">%s€</string>
     <string name="not_initialized">Not_Initialized</string>
 </resources>

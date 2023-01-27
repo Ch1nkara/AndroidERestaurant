@@ -65,7 +65,7 @@
         android:id="@+id/meal_add"
         android:layout_width="40dp"
         android:layout_height="50dp"
-        android:text="@string/plus"
+        android:text="@string/detail_plus"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/meal_count"
@@ -78,7 +78,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:text="@string/not_initialized"
+        android:text="@string/detail_total"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

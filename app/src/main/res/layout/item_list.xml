@@ -22,7 +22,7 @@
             android:id="@+id/content_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/not_initialized"
+            android:text="@string/price_content"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/image_meal"

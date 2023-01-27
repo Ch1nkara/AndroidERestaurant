@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-internal class CheckOutAdapter(var arrayOrder: ArrayList<AnOrder>, private val listener: (Int) -> Unit) : RecyclerView.Adapter<CheckOutAdapter.MyViewHolder>() {
+internal class CheckOutAdapter(private var arrayOrder: ArrayList<AnOrder>, private val listener: (Int) -> Unit) : RecyclerView.Adapter<CheckOutAdapter.MyViewHolder>() {
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val contentName: TextView = view.findViewById(R.id.checkout_content_name)

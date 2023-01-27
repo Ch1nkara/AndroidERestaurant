@@ -34,15 +34,15 @@ class MealDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setCustomView(R.layout.custom_action_bar)
         findViewById<TextView>(R.id.action_bar_title).text = myMealDetail.name_fr
-        val nbItemInCart_tv = findViewById<TextView>(R.id.nb_in_cart)
+        val nbItemInCartTextView = findViewById<TextView>(R.id.nb_in_cart)
         if (nbItemInCart != 0) {
-            nbItemInCart_tv.text = nbItemInCart.toString()
-            nbItemInCart_tv.visibility = View.VISIBLE
+            nbItemInCartTextView.text = nbItemInCart.toString()
+            nbItemInCartTextView.visibility = View.VISIBLE
         }
 
         binding.mealName.text = myMealDetail.name_fr
         binding.mealCount.text = "1"
-        binding.total.text = "SOUS TOTAL " + myMealDetail.prices[0].price.toString() + "€"
+        binding.total.text = this.getString(R.string.detail_total, myMealDetail.prices[0].price.toString())
         var ingredientsList = ""
         for (ingredient: Ingredients in myMealDetail.ingredients) {
             ingredientsList += ingredient.name_fr + ", "
@@ -50,15 +50,15 @@ class MealDetailActivity : AppCompatActivity() {
         binding.ingredients.text = ingredientsList.dropLast(2)
         binding.viewPager.adapter = PictureAdapter(this, myMealDetail.images)
         binding.mealAdd.setOnClickListener {
-            var nbMeal = binding.mealCount.text.toString().toInt() + 1
+            val nbMeal = binding.mealCount.text.toString().toInt() + 1
             binding.mealCount.text = nbMeal.toString()
-            binding.total.text = "SOUS TOTAL " + (nbMeal * myMealDetail.prices[0].price).toString() + "€"
+            binding.total.text = this.getString(R.string.detail_total, (nbMeal * myMealDetail.prices[0].price).toString())
         }
         binding.mealRemove.setOnClickListener {
-            var nbMeal = binding.mealCount.text.toString().toInt() - 1
+            val nbMeal = binding.mealCount.text.toString().toInt() - 1
             if (nbMeal > 0) {
                 binding.mealCount.text = nbMeal.toString()
-                binding.total.text = "SOUS TOTAL " + (nbMeal * myMealDetail.prices[0].price).toString() + "€"
+                binding.total.text = this.getString(R.string.detail_total, (nbMeal * myMealDetail.prices[0].price).toString())
             }
         }
         binding.total.setOnClickListener {
@@ -91,13 +91,13 @@ class MealDetailActivity : AppCompatActivity() {
             nbItemInCart += binding.mealCount.text.toString().toInt()
             preferencesEditor.putInt("nbItemsInCart", nbItemInCart)
             preferencesEditor.apply()
-            nbItemInCart_tv.text = nbItemInCart.toString()
-            nbItemInCart_tv.visibility = View.VISIBLE
+            nbItemInCartTextView.text = nbItemInCart.toString()
+            nbItemInCartTextView.visibility = View.VISIBLE
             //Printing success
             val alertBuilder = AlertDialog.Builder(this)
             alertBuilder.setTitle("Panier à jour")
             alertBuilder.setMessage("La panier a été mis à jour")
-            alertBuilder.setPositiveButton("Ok") { dialog, which -> }
+            alertBuilder.setPositiveButton("Ok") { _, _ -> }
             alertBuilder.show()
         }
         findViewById<ImageView>(R.id.cart_image).setOnClickListener {

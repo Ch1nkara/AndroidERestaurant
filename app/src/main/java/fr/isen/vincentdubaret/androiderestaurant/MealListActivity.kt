@@ -44,7 +44,7 @@ class MealListActivity : AppCompatActivity() {
         Volley.newRequestQueue(this).add(stringReq)
     }
     private fun renderMenu() {
-        var mealListNumber = intent.extras?.getInt("meal_list_number")
+        val mealListNumber = intent.extras?.getInt("meal_list_number")
         if (mealListNumber != null) {
             supportActionBar?.title = parsedData.data[mealListNumber].name_fr
             myCategoryAdapter = CategoryAdapter(this, parsedData.data[mealListNumber]) {

@@ -34,7 +34,7 @@ class HomeActivity : AppCompatActivity() {
             myIntent.putExtra("meal_list_number", 2)
             startActivity(myIntent)
         }
-        //Reseting cart in preferences and in local file
+        //Resetting cart in preferences and in local file
         val localCartPreferences = this.getSharedPreferences("localCartPreferences", MODE_PRIVATE)
         val preferencesEditor = localCartPreferences.edit()
         preferencesEditor.putInt("nbItemsInCart", 0)

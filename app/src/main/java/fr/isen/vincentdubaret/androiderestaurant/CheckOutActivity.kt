@@ -1,24 +1,19 @@
 package fr.isen.vincentdubaret.androiderestaurant
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityCheckOutBinding
-import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityMealListBinding
 import java.io.File
 import java.io.IOException
-import java.io.Serializable
 
 class CheckOutActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCheckOutBinding
     private lateinit var myCheckOutAdapter : CheckOutAdapter
     private var myLocalCart: LocalCart = LocalCart(ArrayList())
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +26,8 @@ class CheckOutActivity : AppCompatActivity() {
             Toast.makeText(this@CheckOutActivity, "Vous avez validé votre panier !", Toast.LENGTH_LONG).show()
         }
 
-        val file = File(this.filesDir, "localCart.txt")
         var readContent = ""
+        val file = File(this.filesDir, "localCart.txt")
         try {
             readContent = file.readText()
         } catch (e: IOException) {
@@ -59,5 +54,12 @@ class CheckOutActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(applicationContext)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = myCheckOutAdapter
+        val file = File(this.filesDir, "localCart.txt")
+        try {
+            file.delete()
+            file.writeText(Gson().toJson(myLocalCart))
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
     }
 }

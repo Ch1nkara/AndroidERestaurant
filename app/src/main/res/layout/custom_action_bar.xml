@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="TextView"
+        android:text="@string/not_initialized"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -25,14 +25,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cart" />
+        app:srcCompat="@drawable/cart"
+        android:contentDescription="@string/actionBar_imageDescription" />
 
     <TextView
         android:id="@+id/nb_in_cart"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:background="@drawable/rounded_corner"
-        android:text="0"
+        android:text="@string/not_initialized"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textStyle="bold"

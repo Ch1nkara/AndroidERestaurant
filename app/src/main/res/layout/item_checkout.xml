@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -17,36 +16,25 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/trash" />
+            app:srcCompat="@drawable/trash"
+            android:contentDescription="@string/itemCheckout_imageDescription" />
 
         <TextView
             android:id="@+id/checkout_content_name"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="to_be_replaced"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/checkout_text_name"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/checkout_text_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nom: "
+            android:text="@string/not_initialized"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/checkout_text_price"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/checkout_trash" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/checkout_text_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="prix: "
+            android:text="@string/price"
             android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/checkout_trash"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkout_content_name" />
 
@@ -54,9 +42,9 @@
             android:id="@+id/checkout_content_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="to_be_replaced"
+            android:text="@string/not_initialized"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/checkout_trash"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/checkout_text_price"
             app:layout_constraintTop_toBottomOf="@+id/checkout_content_name" />
 
@@ -64,10 +52,9 @@
             android:id="@+id/checkout_text_qty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="quantité: "
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:layout_marginStart="20dp"
+            android:text="@string/itemCheckout_quantity"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/checkout_content_price"
             app:layout_constraintTop_toBottomOf="@+id/checkout_content_name" />
 
@@ -75,8 +62,9 @@
             android:id="@+id/checkout_content_qty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/not_initialized"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/checkout_text_qty"
             app:layout_constraintTop_toBottomOf="@+id/checkout_content_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>

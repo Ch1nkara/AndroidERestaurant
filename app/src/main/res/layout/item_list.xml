@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -16,13 +15,14 @@
             android:layout_height="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/entree" />
+            app:srcCompat="@drawable/entree"
+            android:contentDescription="@string/itemListPicture_imageDescription" />
 
         <TextView
             android:id="@+id/content_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="to_be_replaced"
+            android:text="@string/not_initialized"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/image_meal"
@@ -33,7 +33,7 @@
             android:id="@+id/content_name"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="to_be_replaced"
+            android:text="@string/not_initialized"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
             android:id="@+id/text_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="prix: "
+            android:text="@string/price"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/image_meal"
             app:layout_constraintStart_toStartOf="parent"

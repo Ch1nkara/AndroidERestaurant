@@ -28,7 +28,7 @@ internal class CategoryAdapter(var myContext : Context, var myParsedData: ListOf
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = myParsedData.items[position]
         holder.contentName.text = item.name_fr
-        holder.contentPrice.text = item.prices[0].price.toString()
+        holder.contentPrice.text = item.prices[0].price.toString() + "€"
         if (! item.images[0].isNullOrEmpty()) {
             Picasso.with(myContext).load(item.images[0])
                 .error(R.drawable.not_found)

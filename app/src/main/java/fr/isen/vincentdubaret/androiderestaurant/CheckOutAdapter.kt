@@ -25,10 +25,7 @@ internal class CheckOutAdapter(var arrayOrder: ArrayList<AnOrder>, private val l
         holder.contentName.text = item.mealName
         holder.contentPrice.text = item.mealPrice.toString()
         holder.contentQty.text = item.mealQuantity.toString()
-        holder.imageTrash.setOnClickListener { listener(item.mealId) }
+        holder.imageTrash.setOnClickListener { listener(position) }
     }
-
     override fun getItemCount(): Int = arrayOrder.size
-
-
 }

@@ -14,7 +14,13 @@ class PictureAdapter (private val mContext: Context, private  val imageList: Arr
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_picture, parent, false)
         val imageView: ImageView = view.findViewById(R.id.picture_meal)
-        Picasso.with(mContext).load(imageList[position]).into(imageView)
+        if (! imageList[position].isNullOrEmpty()) {
+            Picasso.with(mContext).load(imageList[position])
+                .error(R.drawable.not_found)
+                .into(imageView)
+        } else {
+            imageView.setImageResource(R.drawable.not_found)
+        }
         parent.addView(view, position)
         return view
     }

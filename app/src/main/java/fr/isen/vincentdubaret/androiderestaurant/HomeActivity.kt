@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import fr.isen.vincentdubaret.androiderestaurant.databinding.ActivityHomeBinding
+import java.io.File
 
 class HomeActivity : AppCompatActivity() {
 
@@ -33,10 +34,13 @@ class HomeActivity : AppCompatActivity() {
             myIntent.putExtra("meal_list_number", 2)
             startActivity(myIntent)
         }
+        //Reseting cart in preferences and in local file
         val localCartPreferences = this.getSharedPreferences("localCartPreferences", MODE_PRIVATE)
         val preferencesEditor = localCartPreferences.edit()
         preferencesEditor.putInt("nbItemsInCart", 0)
         preferencesEditor.apply()
+        val file = File(this.filesDir, "localCart.txt")
+        file.delete()
     }
     override fun onDestroy() {
         Log.d("##########HUMAN############", "Home has been destroyed !!!!!")

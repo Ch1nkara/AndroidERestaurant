@@ -1,6 +1,7 @@
 package fr.isen.vincentdubaret.androiderestaurant
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,15 +29,10 @@ internal class CategoryAdapter(var myContext : Context, var myParsedData: ListOf
         val item = myParsedData.items[position]
         holder.contentName.text = item.name_fr
         holder.contentPrice.text = item.prices[0].price.toString()
-        val url = item.images[0]
-        if (url.isNotEmpty()) {
-            if (item.images[0] != "") {
-                Picasso.with(myContext).load(item.images[0])
-                    .error(R.drawable.not_found)
-                    .into(holder.imageMeal)
-            } else {
-                holder.imageMeal.setImageResource(R.drawable.not_found)
-            }
+        if (! item.images[0].isNullOrEmpty()) {
+            Picasso.with(myContext).load(item.images[0])
+                .error(R.drawable.not_found)
+                .into(holder.imageMeal)
         } else {
             holder.imageMeal.setImageResource(R.drawable.not_found)
         }

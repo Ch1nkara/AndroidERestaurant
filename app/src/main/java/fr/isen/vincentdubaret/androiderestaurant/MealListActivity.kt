@@ -42,12 +42,6 @@ class MealListActivity : AppCompatActivity() {
                 }
             }
         Volley.newRequestQueue(this).add(stringReq)
-
-        //Adding back button
-        binding.buttonBack.setOnClickListener {
-            val myIntent = Intent(this@MealListActivity, HomeActivity::class.java)
-            startActivity(myIntent)
-        }
     }
     private fun renderMenu() {
         var mealListNumber = intent.extras?.getInt("meal_list_number")
